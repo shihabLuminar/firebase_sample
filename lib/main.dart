@@ -1,8 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_sample/controler/login_screen_controller.dart';
 import 'package:firebase_sample/controler/registration_screen_contrller.dart';
 import 'package:firebase_sample/firebase_options.dart';
-import 'package:firebase_sample/views/registration_screen/registration_screen.dart';
 import 'package:firebase_sample/views/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

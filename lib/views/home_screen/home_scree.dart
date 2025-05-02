@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_sample/views/add_employee_screen/add_employee_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -7,7 +8,15 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var currentUser = FirebaseAuth.instance.currentUser?.uid;
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed:
+            () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AddEmployeeScreen()),
+            ),
+      ),
       appBar: AppBar(
         title: Text("Home Screen"),
         actions: [
@@ -35,6 +44,11 @@ class HomeScreen extends StatelessWidget {
             itemCount: snapshot.data?.docs.length ?? 0,
             itemBuilder: (context, index) {
               return ListTile(
+                leading: Image.network(
+                  snapshot.data?.docs[index]["img"],
+                  width: 80,
+                  height: 80,
+                ),
                 title: Text(snapshot.data?.docs[index]["name"]),
                 subtitle: Text(snapshot.data?.docs[index]["ph"]),
 
